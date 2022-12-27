@@ -23,3 +23,7 @@ Example dataframe has 10 columns.
 k-means_clustering/
 ├── k-means_2d_cluster.py
 ```
+
+
+#  mamba install -c anaconda seaborn
+#  mamba install -c conda-forge pyodide-py
