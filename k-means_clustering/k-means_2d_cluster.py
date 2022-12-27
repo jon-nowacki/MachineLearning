@@ -11,6 +11,10 @@ import numpy as np
 import matplotlib.pyplot as plt 
 from sklearn.cluster import KMeans 
 from sklearn.datasets import make_blobs 
+# Pyodide is a port of CPython to WebAssembly/Emscripten.
+# used for download
+from pyodide.http import pyfetch
+
 #%matplotlib inline
 
 # importing os module  
@@ -39,9 +43,6 @@ import warnings
 warnings.warn = warn
 # ?????????????????
 warnings.filterwarnings('ignore')
-
-# Pyodide is a port of CPython to WebAssembly/Emscripten.
-from pyodide.http import pyfetch
 
 # 
 async def download(url, filename):
