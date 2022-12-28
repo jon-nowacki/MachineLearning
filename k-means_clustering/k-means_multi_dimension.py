@@ -6,37 +6,40 @@ import random
 import numpy as np 
 import matplotlib.pyplot as plt 
 import os 
+import asyncio
+import random 
+
+from sklearn.cluster import KMeans 
+from sklearn.datasets import make_blobs 
+
 # Pyodide is a port of CPython to WebAssembly/Emscripten.
 # used for download
 from pyodide.http import pyfetch
-"""
-output = 'output'
-def warn(*args, **kwargs):
-    pass
-import warnings
-warnings.warn = warn
-warnings.filterwarnings('ignore')
+import requests
 
+output = 'output'
 try: 
     os.mkdir(output) 
 except OSError as error: 
     print(error)  
+
 """
+URL ='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%204/data/Cust_Segmentation.csv' 
+
+filename ="Cust_Segmentation.csv"
+
 async def download(url, filename):
     response = await pyfetch(url)
     if response.status == 200:
         with open(filename, "wb") as f: # write binary mode
             f.write(await response.bytes())
 
-
-path='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%204/data/Cust_Segmentation.csv' 
-await download(path, "Cust_Segmentation.csv")
-filename ="Cust_Segmentation.csv"
+asyncio.run(download(URL, "Cust_Segmentation.csv"))
+"""
 
 cust_df = pd.read_csv("Cust_Segmentation.csv")
 cust_df.head()
 
-"""
 # Preprocessing
 # "Address" in this dataset is a categorical variable. The k-means algorithm isn't directly applicable to 
 # categorical variables because the Euclidean distance function isn't really meaningful for discrete variables. 
@@ -83,5 +86,3 @@ ax.set_zlabel('Income')
 
 ax.scatter(X[:, 1], X[:, 0], X[:, 3], c= labels.astype(np.float))
 plt.savefig(output + '/k-means_2b.png')
-
-"""
