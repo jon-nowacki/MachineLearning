@@ -1,11 +1,8 @@
-#  mamba install -c anaconda seaborn
-#  mamba install -c conda-forge pyodide-py
 
 import pandas
 import matplotlib
 import scipy
 import seaborn
-
 import random 
 import numpy as np 
 import matplotlib.pyplot as plt 
@@ -19,10 +16,8 @@ from pyodide.http import pyfetch
 
 # importing os module  
 import os 
-    
 # path 
 output = 'output'
-    
 # Create the directory 
 # 'GeeksForGeeks' in 
 # '/home / User / Documents' 
